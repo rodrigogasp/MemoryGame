@@ -18,6 +18,14 @@ class GameView: UIView {
     
     var scrollView: UIScrollView!
     
+    var oneView : UIButton!
+    
+    var twoView : UIButton!
+    
+    var threeView : UIButton!
+    
+    var someButton : UIButton!
+    
     /* ******************************************************************************
      **
      **  MARK: Init
@@ -38,9 +46,44 @@ class GameView: UIView {
         
         scrollView = UIScrollView(frame: CGRect(x: 0, y: 0, width: width, height: height))
         scrollView.isScrollEnabled = true
-        scrollView.backgroundColor = .blue
+        scrollView.backgroundColor = .white
         
         view.addSubview(scrollView)
+        
+        oneView = UIButton(frame: CGRect(x: 0, y: yPosition, width: 150, height: 150))
+        oneView.backgroundColor = .green
+        oneView.layer.borderWidth = 3
+        oneView.center.x = width/2
+        
+        scrollView.addSubview(oneView)
+        
+        yPosition = yPosition + oneView.frame.height + 20
+        
+        twoView = UIButton(frame: CGRect(x: 0, y: yPosition, width: 150, height: 150))
+        twoView.backgroundColor = .red
+        twoView.layer.borderWidth = 3
+        twoView.center.x = width/2
+        
+        scrollView.addSubview(twoView)
+        
+        yPosition = yPosition + twoView.frame.height + 20
+        
+        threeView = UIButton(frame: CGRect(x: 0, y: yPosition, width: 150, height: 150))
+        threeView.backgroundColor = .blue
+        threeView.layer.borderWidth = 3
+        threeView.center.x = width/2
+        
+        scrollView.addSubview(threeView)
+        
+        yPosition = yPosition + threeView.frame.height + 20
+        
+        someButton = UIButton(frame: CGRect(x: 0, y: yPosition, width: width*0.7, height: 50))
+        someButton.backgroundColor = .yellow
+        someButton.setTitle("Go!", for: .normal)
+        someButton.setTitleColor(.black, for: .normal)
+        someButton.center.x = width/2
+        
+        scrollView.addSubview(someButton)
         
     }
     

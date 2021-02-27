@@ -15,6 +15,7 @@
 		04520A9325EAA77900D38EBF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04520A9225EAA77900D38EBF /* Assets.xcassets */; };
 		04520A9625EAA77900D38EBF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04520A9425EAA77900D38EBF /* LaunchScreen.storyboard */; };
 		04520AAD25EAAA0700D38EBF /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04520AAC25EAAA0700D38EBF /* GameView.swift */; };
+		04520AB125EABDD000D38EBF /* GenericAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04520AB025EABDD000D38EBF /* GenericAlert.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		04520A9525EAA77900D38EBF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		04520A9725EAA77A00D38EBF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		04520AAC25EAAA0700D38EBF /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
+		04520AB025EABDD000D38EBF /* GenericAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericAlert.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +77,7 @@
 		04520A9E25EAA7B300D38EBF /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				04520AB025EABDD000D38EBF /* GenericAlert.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -193,6 +196,7 @@
 			files = (
 				04520A8B25EAA77800D38EBF /* GameVC.swift in Sources */,
 				04520A8725EAA77800D38EBF /* AppDelegate.swift in Sources */,
+				04520AB125EABDD000D38EBF /* GenericAlert.swift in Sources */,
 				04520A9125EAA77800D38EBF /* MemoryGame.xcdatamodeld in Sources */,
 				04520A8925EAA77800D38EBF /* SceneDelegate.swift in Sources */,
 				04520AAD25EAAA0700D38EBF /* GameView.swift in Sources */,

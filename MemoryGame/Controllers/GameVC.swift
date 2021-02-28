@@ -285,8 +285,6 @@ class GameVC: UIViewController {
                 
             }
             
-            self.setInfo()
-            
             self.colorsArray = []
             
             self.count = 1
@@ -294,6 +292,8 @@ class GameVC: UIViewController {
             self.score = 0
             
             self.timer = nil
+            
+            self.setInfo()
             
             GenericAlert.genericAlert(self, title: "Errooooooooou", message: "", actions: [])
             

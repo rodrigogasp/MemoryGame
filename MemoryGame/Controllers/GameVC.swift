@@ -26,6 +26,8 @@ class GameVC: UIViewController {
     
     var clickIndex : Int = 0
     
+    var score : Int = 0
+    
     /* **************************************************************************************************
      **
      **  MARK: View
@@ -45,6 +47,8 @@ class GameVC: UIViewController {
         
         gameView.threeView.addTarget(self, action: #selector(blueClick), for: .touchUpInside)
         
+        gameView.fourView.addTarget(self, action: #selector(yellowClick), for: .touchUpInside)
+        
         
         
         
@@ -53,7 +57,26 @@ class GameVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        setInfo()
+        
+        
     }
+    
+    func setInfo() {
+        
+        let preferences = UserDefaults.standard
+        
+        if let highScore = preferences.object(forKey: "preferenceHighScore") as? Int {
+            
+            self.gameView.highScoreLabel.text = "Highscore : \(highScore)"
+            
+        }
+        
+        self.gameView.scoreLabel.text = "Score : \(score)"
+        
+        
+    }
+    
     
     /* **************************************************************************************************
      **
@@ -70,6 +93,8 @@ class GameVC: UIViewController {
         var number = 1
         
         var index = 0
+        
+        
         
         timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true, block: { (timer) in
             
@@ -148,13 +173,31 @@ class GameVC: UIViewController {
     
     /* **************************************************************************************************
      **
+     **  MARK: Yellow Action
+     **
+     ****************************************************************************************************/
+    
+    func yellowAction() {
+        
+        gameView.fourView.layer.borderColor = UIColor.white.cgColor
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
+            
+            self.gameView.fourView.layer.borderColor = UIColor.black.cgColor
+            
+        }
+        
+    }
+    
+    /* **************************************************************************************************
+     **
      **  MARK: Func start Game
      **
      ****************************************************************************************************/
     
     func sortColor() {
         
-        let random = Int.random(in: 1...3)
+        let random = Int.random(in: 1...4)
         
         self.colorsArray.append(random)
         
@@ -174,6 +217,10 @@ class GameVC: UIViewController {
         } else if number == 3 {
             
             self.blueAction()
+            
+        } else if number == 4 {
+            
+            self.yellowAction()
             
         }
         
@@ -197,17 +244,54 @@ class GameVC: UIViewController {
         
     }
     
+    @objc func yellowClick() {
+        
+        checkClick(number: 4)
+        
+    }
+    
     func checkClick(number : Int) {
         
         if number == self.colorsArray[clickIndex] {
             
             clickIndex += 1
             
+            if clickIndex == self.colorsArray.count {
+                
+                self.score += 1
+                
+                self.setInfo()
+                
+                GenericAlert.genericAlert(self, title: "Passou de fase", message: "", actions: [])
+                
+            }
+            
         } else {
+            
+            
+            let preferences = UserDefaults.standard
+            
+            if let highScore = preferences.object(forKey: "preferenceHighScore") as? Int {
+                
+                if self.score > highScore {
+                    
+                    preferences.setValue(self.score, forKey: "preferenceHighScore")
+                    
+                }
+            
+            } else {
+                
+                preferences.setValue(self.score, forKey: "preferenceHighScore")
+                
+            }
+            
+            self.setInfo()
             
             self.colorsArray = []
             
             self.count = 1
+            
+            self.score = 0
             
             self.timer = nil
             

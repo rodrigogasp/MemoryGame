@@ -18,11 +18,17 @@ class GameView: UIView {
     
     var scrollView: UIScrollView!
     
+    var scoreLabel : UILabel!
+    
+    var highScoreLabel : UILabel!
+    
     var oneView : UIButton!
     
     var twoView : UIButton!
     
     var threeView : UIButton!
+    
+    var fourView : UIButton!
     
     var someButton : UIButton!
     
@@ -40,40 +46,59 @@ class GameView: UIView {
         let width = view.frame.size.width
         let height = view.frame.size.height
         
-        var yPosition = height*0.13
+        var yPosition = height*0.05
         
         //------------------------- Scroll View -----------------------------
         
         scrollView = UIScrollView(frame: CGRect(x: 0, y: 0, width: width, height: height))
         scrollView.isScrollEnabled = true
-        scrollView.backgroundColor = .white
+        scrollView.backgroundColor = .black
         
         view.addSubview(scrollView)
         
-        oneView = UIButton(frame: CGRect(x: 0, y: yPosition, width: 150, height: 150))
+        highScoreLabel = UILabel(frame: CGRect(x: width*0.05, y: yPosition, width: width*0.4, height: 25))
+        highScoreLabel.textColor = .white
+        highScoreLabel.font = UIFont.defaultFont(size: 18, type: .bold)
+        
+        scrollView.addSubview(highScoreLabel)
+        
+        scoreLabel = UILabel(frame: CGRect(x: 0, y: yPosition, width: width*0.4, height: 25))
+        scoreLabel.textColor = .white
+        scoreLabel.font = UIFont.defaultFont(size: 18, type: .bold)
+        scoreLabel.frame.origin.x = width*0.95 - scoreLabel.frame.width
+        
+        scrollView.addSubview(scoreLabel)
+        
+        yPosition = yPosition + scoreLabel.frame.height + 50
+        
+        oneView = UIButton(frame: CGRect(x: width*0.05, y: yPosition, width: width*0.4375, height: width*0.4375))
         oneView.backgroundColor = .green
         oneView.layer.borderWidth = 3
-        oneView.center.x = width/2
         
         scrollView.addSubview(oneView)
         
-        yPosition = yPosition + oneView.frame.height + 20
+        let xPosition = oneView.frame.origin.x + oneView.frame.width + width*0.025
         
-        twoView = UIButton(frame: CGRect(x: 0, y: yPosition, width: 150, height: 150))
+        twoView = UIButton(frame: CGRect(x: xPosition, y: yPosition, width: width*0.4375, height: width*0.4375))
         twoView.backgroundColor = .red
         twoView.layer.borderWidth = 3
-        twoView.center.x = width/2
         
         scrollView.addSubview(twoView)
         
         yPosition = yPosition + twoView.frame.height + 20
         
-        threeView = UIButton(frame: CGRect(x: 0, y: yPosition, width: 150, height: 150))
+        threeView = UIButton(frame: CGRect(x: width*0.05, y: yPosition, width: width*0.4375, height: width*0.4375))
         threeView.backgroundColor = .blue
         threeView.layer.borderWidth = 3
-        threeView.center.x = width/2
         
         scrollView.addSubview(threeView)
+        
+        
+        fourView = UIButton(frame: CGRect(x: xPosition, y: yPosition, width: width*0.4375, height: width*0.4375))
+        fourView.backgroundColor = .yellow
+        fourView.layer.borderWidth = 3
+        
+        scrollView.addSubview(fourView)
         
         yPosition = yPosition + threeView.frame.height + 20
         

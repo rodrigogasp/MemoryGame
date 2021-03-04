@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		040AEDF725EBF1D8007BB0EF /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 040AEDF925EBF1D8007BB0EF /* Localizable.strings */; };
+		040AEDFE25EBF27F007BB0EF /* Strings+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040AEDFD25EBF27F007BB0EF /* Strings+Extension.swift */; };
 		04520A8725EAA77800D38EBF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04520A8625EAA77800D38EBF /* AppDelegate.swift */; };
 		04520A8925EAA77800D38EBF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04520A8825EAA77800D38EBF /* SceneDelegate.swift */; };
 		04520A8B25EAA77800D38EBF /* GameVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04520A8A25EAA77800D38EBF /* GameVC.swift */; };
@@ -21,6 +23,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		040AEDF825EBF1D8007BB0EF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		040AEDFB25EBF1FA007BB0EF /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		040AEDFD25EBF27F007BB0EF /* Strings+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Strings+Extension.swift"; sourceTree = "<group>"; };
 		04520A8325EAA77800D38EBF /* MemoryGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MemoryGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04520A8625EAA77800D38EBF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		04520A8825EAA77800D38EBF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -50,6 +55,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		040AEDF225EBF194007BB0EF /* Translate */ = {
+			isa = PBXGroup;
+			children = (
+				040AEDF925EBF1D8007BB0EF /* Localizable.strings */,
+			);
+			path = Translate;
+			sourceTree = "<group>";
+		};
 		04520A7A25EAA77800D38EBF = {
 			isa = PBXGroup;
 			children = (
@@ -73,6 +86,7 @@
 			children = (
 				04520A8625EAA77800D38EBF /* AppDelegate.swift */,
 				04520A8825EAA77800D38EBF /* SceneDelegate.swift */,
+				040AEDF225EBF194007BB0EF /* Translate */,
 				04520AA325EAA81200D38EBF /* StoryBoards */,
 				04520AA225EAA7EB00D38EBF /* Resources */,
 				04520AA125EAA7C800D38EBF /* Extensions */,
@@ -111,6 +125,7 @@
 			isa = PBXGroup;
 			children = (
 				0480B70B25EB1C67001DD27A /* Font+Extension.swift */,
+				040AEDFD25EBF27F007BB0EF /* Strings+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -193,6 +208,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"pt-BR",
 			);
 			mainGroup = 04520A7A25EAA77800D38EBF;
 			productRefGroup = 04520A8425EAA77800D38EBF /* Products */;
@@ -210,6 +226,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				04520A9625EAA77900D38EBF /* LaunchScreen.storyboard in Resources */,
+				040AEDF725EBF1D8007BB0EF /* Localizable.strings in Resources */,
 				04520A9325EAA77900D38EBF /* Assets.xcassets in Resources */,
 				04520A8E25EAA77800D38EBF /* Main.storyboard in Resources */,
 			);
@@ -251,6 +268,7 @@
 				04520A8725EAA77800D38EBF /* AppDelegate.swift in Sources */,
 				04520AB125EABDD000D38EBF /* GenericAlert.swift in Sources */,
 				04520A9125EAA77800D38EBF /* MemoryGame.xcdatamodeld in Sources */,
+				040AEDFE25EBF27F007BB0EF /* Strings+Extension.swift in Sources */,
 				04520A8925EAA77800D38EBF /* SceneDelegate.swift in Sources */,
 				0480B70C25EB1C67001DD27A /* Font+Extension.swift in Sources */,
 				04520AAD25EAAA0700D38EBF /* GameView.swift in Sources */,
@@ -260,6 +278,15 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		040AEDF925EBF1D8007BB0EF /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				040AEDF825EBF1D8007BB0EF /* en */,
+				040AEDFB25EBF1FA007BB0EF /* pt-BR */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		04520A8C25EAA77800D38EBF /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -283,6 +310,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -344,6 +372,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -402,7 +431,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = G3W58CVV87;
+				DEVELOPMENT_TEAM = G52S3NF77R;
 				INFOPLIST_FILE = MemoryGame/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -422,7 +451,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = G3W58CVV87;
+				DEVELOPMENT_TEAM = G52S3NF77R;
 				INFOPLIST_FILE = MemoryGame/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

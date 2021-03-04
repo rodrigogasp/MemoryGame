@@ -28,6 +28,8 @@ class GameVC: UIViewController {
     
     var score : Int = 0
     
+    var enable : Bool = true
+    
     /* **************************************************************************************************
      **
      **  MARK: View
@@ -42,12 +44,17 @@ class GameVC: UIViewController {
         gameView.someButton.addTarget(self, action: #selector(startGame), for: .touchUpInside)
         
         gameView.oneView.addTarget(self, action: #selector(greenClick), for: .touchUpInside)
+        gameView.oneView.addTarget(self, action: #selector(greenAction), for: .touchUpInside)
         
         gameView.twoView.addTarget(self, action: #selector(redClick), for: .touchUpInside)
+        gameView.twoView.addTarget(self, action: #selector(redAction), for: .touchUpInside)
         
         gameView.threeView.addTarget(self, action: #selector(blueClick), for: .touchUpInside)
+        gameView.threeView.addTarget(self, action: #selector(blueAction), for: .touchUpInside)
         
         gameView.fourView.addTarget(self, action: #selector(yellowClick), for: .touchUpInside)
+        gameView.fourView.addTarget(self, action: #selector(yellowAction), for: .touchUpInside)
+        
         
         
         
@@ -74,6 +81,8 @@ class GameVC: UIViewController {
         
         self.gameView.scoreLabel.text = "Score : \(score)"
         
+        self.gameView.someButton.setTitle("Round \(self.score + 1)", for: .normal)
+        
         
     }
     
@@ -95,7 +104,6 @@ class GameVC: UIViewController {
         var index = 0
         
         
-        
         timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true, block: { (timer) in
             
             self.loopColors(number: self.colorsArray[index])
@@ -105,6 +113,8 @@ class GameVC: UIViewController {
                 timer.invalidate()
                 
                 self.count += 1
+                
+                self.disableEnableButton()
               
             }
             
@@ -123,7 +133,7 @@ class GameVC: UIViewController {
      **
      ****************************************************************************************************/
     
-    func greenAction() {
+    @objc func greenAction() {
         
         gameView.oneView.layer.borderColor = UIColor.white.cgColor
         
@@ -141,7 +151,7 @@ class GameVC: UIViewController {
      **
      ****************************************************************************************************/
     
-    func redAction() {
+    @objc func redAction() {
         
         gameView.twoView.layer.borderColor = UIColor.white.cgColor
         
@@ -159,7 +169,7 @@ class GameVC: UIViewController {
      **
      ****************************************************************************************************/
     
-    func blueAction() {
+    @objc func blueAction() {
         
         gameView.threeView.layer.borderColor = UIColor.white.cgColor
         
@@ -177,7 +187,7 @@ class GameVC: UIViewController {
      **
      ****************************************************************************************************/
     
-    func yellowAction() {
+    @objc func yellowAction() {
         
         gameView.fourView.layer.borderColor = UIColor.white.cgColor
         
@@ -262,7 +272,9 @@ class GameVC: UIViewController {
                 
                 self.setInfo()
                 
-                GenericAlert.genericAlert(self, title: "Passou de fase", message: "", actions: [])
+                self.disableEnableButton()
+                
+                GenericAlert.genericAlert(self, title: "Nice! Are you for the next round?".localized, message: "", actions: [])
                 
             }
             
@@ -295,7 +307,41 @@ class GameVC: UIViewController {
             
             self.setInfo()
             
-            GenericAlert.genericAlert(self, title: "Errooooooooou", message: "", actions: [])
+            self.disableEnableButton()
+            
+            GenericAlert.genericAlert(self, title: "Ops, you miss. Better luck next time!".localized, message: "", actions: [])
+            
+        }
+        
+    }
+    
+    func disableEnableButton() {
+        
+        if enable {
+            
+            self.gameView.someButton.isUserInteractionEnabled = false
+            self.gameView.someButton.backgroundColor = .darkGray
+            self.gameView.someButton.setTitle("Your up".localized, for: .normal)
+            
+            self.enable = false
+            
+            self.gameView.oneView.isUserInteractionEnabled = true
+            self.gameView.twoView.isUserInteractionEnabled = true
+            self.gameView.threeView.isUserInteractionEnabled = true
+            self.gameView.fourView.isUserInteractionEnabled = true
+            
+        } else if !enable {
+            
+            self.gameView.someButton.isUserInteractionEnabled = true
+            self.gameView.someButton.backgroundColor = .white
+            self.gameView.someButton.setTitle("Round \(self.score + 1)".localized, for: .normal)
+            
+            self.enable = true
+            
+            self.gameView.oneView.isUserInteractionEnabled = false
+            self.gameView.twoView.isUserInteractionEnabled = false
+            self.gameView.threeView.isUserInteractionEnabled = false
+            self.gameView.fourView.isUserInteractionEnabled = false
             
         }
         

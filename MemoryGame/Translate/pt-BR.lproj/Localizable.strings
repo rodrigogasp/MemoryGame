@@ -1,0 +1,13 @@
+/* 
+  Localizable.strings
+  MemoryGame
+
+  Created by Rodrigo Gaspar on 28/02/21.
+  
+*/
+
+//PORTUGUESE BR
+"Nice! Are you for the next round?" = "Parabéns! Você está pronto para a próxima rodada?";
+"Ops, you miss. Better luck next time!" = "Ops, você errou! Melhor sorte na próxima vez!";
+"Your up" = "Sua vez!";
+"Ops, you miss. Better luck next time!" = "Ops, você errou. Boa sorte na próxima vez!!";

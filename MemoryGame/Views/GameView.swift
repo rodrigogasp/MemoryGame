@@ -66,6 +66,7 @@ class GameView: UIView {
         scoreLabel.textColor = .white
         scoreLabel.font = UIFont.defaultFont(size: 18, type: .bold)
         scoreLabel.frame.origin.x = width*0.95 - scoreLabel.frame.width
+        scoreLabel.textAlignment = .right
         
         scrollView.addSubview(scoreLabel)
         
@@ -103,7 +104,7 @@ class GameView: UIView {
         yPosition = yPosition + threeView.frame.height + 20
         
         someButton = UIButton(frame: CGRect(x: 0, y: yPosition, width: width*0.7, height: 50))
-        someButton.backgroundColor = .yellow
+        someButton.backgroundColor = .white
         someButton.setTitle("Go!", for: .normal)
         someButton.setTitleColor(.black, for: .normal)
         someButton.center.x = width/2

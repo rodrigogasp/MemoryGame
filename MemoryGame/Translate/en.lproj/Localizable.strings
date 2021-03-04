@@ -1,0 +1,13 @@
+/* 
+  Localizable.strings
+  MemoryGame
+
+  Created by Rodrigo Gaspar on 28/02/21.
+  
+*/
+
+//ENGLISH
+"Nice! Are you for the next round?" = "Nice! Are you for the next round?";
+"Ops, you miss. Better luck next time!" = "Ops, you miss. Better luck next time!";
+"Your up" = "Your up";
+"Ops, you miss. Better luck next time!" = "Ops, you miss. Better luck next time!";

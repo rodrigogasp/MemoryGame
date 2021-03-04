@@ -280,36 +280,68 @@ class GameVC: UIViewController {
             
         } else {
             
-            
             let preferences = UserDefaults.standard
             
             if let highScore = preferences.object(forKey: "preferenceHighScore") as? Int {
                 
                 if self.score > highScore {
                     
-                    preferences.setValue(self.score, forKey: "preferenceHighScore")
+                    var roundScore = self.score
+                    
+                    self.colorsArray = []
+                    
+                    self.count = 1
+                    
+                    self.score = 0
+                    
+                    self.timer = nil
+                    
+                    self.setInfo()
+                    
+                    self.disableEnableButton()
+                    
+                    preferences.setValue(roundScore, forKey: "preferenceHighScore")
+                    
+                    GenericAlert.genericAlert(self, title: "You did".localized + " \(roundScore) " + "points and this your new record! Congratulations!".localized, message: "", actions: [])
+                    
+                } else {
+                    
+                    self.colorsArray = []
+                    
+                    self.count = 1
+                    
+                    self.score = 0
+                    
+                    self.timer = nil
+                    
+                    self.setInfo()
+                    
+                    self.disableEnableButton()
+                    
+                    GenericAlert.genericAlert(self, title: "Ops, you miss. Better luck next time!".localized, message: "", actions: [])
                     
                 }
             
             } else {
                 
+                self.colorsArray = []
+                
+                self.count = 1
+                
                 preferences.setValue(self.score, forKey: "preferenceHighScore")
                 
+                self.score = 0
+                
+                self.timer = nil
+                
+                self.setInfo()
+                
+                self.disableEnableButton()
+                
+                GenericAlert.genericAlert(self, title: "Ops, you miss. Better luck next time!".localized, message: "", actions: [])
+                
+                
             }
-            
-            self.colorsArray = []
-            
-            self.count = 1
-            
-            self.score = 0
-            
-            self.timer = nil
-            
-            self.setInfo()
-            
-            self.disableEnableButton()
-            
-            GenericAlert.genericAlert(self, title: "Ops, you miss. Better luck next time!".localized, message: "", actions: [])
             
         }
         

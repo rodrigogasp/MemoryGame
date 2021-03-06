@@ -296,11 +296,11 @@ class GameVC: UIViewController {
                     
                     self.timer = nil
                     
-                    self.setInfo()
-                    
                     self.disableEnableButton()
                     
                     preferences.setValue(roundScore, forKey: "preferenceHighScore")
+                    
+                    self.setInfo()
                     
                     GenericAlert.genericAlert(self, title: "You did".localized + " \(roundScore) " + "points and this your new record! Congratulations!".localized, message: "", actions: [])
                     

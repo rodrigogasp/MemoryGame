@@ -289,8 +289,6 @@ class GameVC: UIViewController {
                 
                 if self.score > highScore {
                     
-                    self.sendToFireBase()
-                    
                     var roundScore = self.score
                     
                     self.colorsArray = []
@@ -304,6 +302,8 @@ class GameVC: UIViewController {
                     self.disableEnableButton()
                     
                     preferences.setValue(roundScore, forKey: "preferenceHighScore")
+                    
+                    self.sendToFireBase()
                     
                     self.setInfo()
                     
@@ -392,9 +392,9 @@ class GameVC: UIViewController {
         
         if let scoreSend = preferences.object(forKey: "preferenceHighScore") as? Int {
             
-            let thisScore = Score(addedByUser: "Karina", score: scoreSend)
+            let thisScore = Score(addedByUser: "Rodrigo", score: scoreSend)
             
-            let scoreRef = self.ref.child("Karina".lowercased())
+            let scoreRef = self.ref.child("rodrigo".lowercased())
 
             scoreRef.setValue(thisScore.toAnyObject())
             

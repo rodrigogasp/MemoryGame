@@ -7,6 +7,7 @@
 
 
 import UIKit
+import FirebaseDatabase
 
 class GameVC: UIViewController {
     
@@ -29,6 +30,8 @@ class GameVC: UIViewController {
     var score : Int = 0
     
     var enable : Bool = true
+    
+    let ref = Database.database().reference(withPath: "scoreBoard")
     
     /* **************************************************************************************************
      **
@@ -286,6 +289,8 @@ class GameVC: UIViewController {
                 
                 if self.score > highScore {
                     
+                    self.sendToFireBase()
+                    
                     var roundScore = self.score
                     
                     self.colorsArray = []
@@ -323,12 +328,14 @@ class GameVC: UIViewController {
                 }
             
             } else {
-                
+            
                 self.colorsArray = []
                 
                 self.count = 1
                 
                 preferences.setValue(self.score, forKey: "preferenceHighScore")
+                
+                self.sendToFireBase()
                 
                 self.score = 0
                 
@@ -374,6 +381,22 @@ class GameVC: UIViewController {
             self.gameView.twoView.isUserInteractionEnabled = false
             self.gameView.threeView.isUserInteractionEnabled = false
             self.gameView.fourView.isUserInteractionEnabled = false
+            
+        }
+        
+    }
+    
+    func sendToFireBase() {
+        
+        let preferences = UserDefaults.standard
+        
+        if let scoreSend = preferences.object(forKey: "preferenceHighScore") as? Int {
+            
+            let thisScore = Score(addedByUser: "Karina", score: scoreSend)
+            
+            let scoreRef = self.ref.child("Karina".lowercased())
+
+            scoreRef.setValue(thisScore.toAnyObject())
             
         }
         

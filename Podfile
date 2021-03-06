@@ -6,5 +6,9 @@ target 'MemoryGame' do
   use_frameworks!
 
   # Pods for MemoryGame
+  pod 'Firebase/Core'
+  pod 'Firebase/Database'
+  pod 'Firebase/Auth'
+  pod 'Firebase/Analytics'
 
 end

@@ -3,10 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0401095425F41D2A0024E964 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0401095325F41D2A0024E964 /* GoogleService-Info.plist */; };
+		0401097925F4237D0024E964 /* Score.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0401097825F4237D0024E964 /* Score.swift */; };
 		040AEDF725EBF1D8007BB0EF /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 040AEDF925EBF1D8007BB0EF /* Localizable.strings */; };
 		040AEDFE25EBF27F007BB0EF /* Strings+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040AEDFD25EBF27F007BB0EF /* Strings+Extension.swift */; };
 		04520A8725EAA77800D38EBF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04520A8625EAA77800D38EBF /* AppDelegate.swift */; };
@@ -23,6 +25,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0401095325F41D2A0024E964 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		0401097825F4237D0024E964 /* Score.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Score.swift; sourceTree = "<group>"; };
 		040AEDF825EBF1D8007BB0EF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		040AEDFB25EBF1FA007BB0EF /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		040AEDFD25EBF27F007BB0EF /* Strings+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Strings+Extension.swift"; sourceTree = "<group>"; };
@@ -55,6 +59,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0401097725F423720024E964 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				0401097825F4237D0024E964 /* Score.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		040AEDF225EBF194007BB0EF /* Translate */ = {
 			isa = PBXGroup;
 			children = (
@@ -84,6 +96,7 @@
 		04520A8525EAA77800D38EBF /* MemoryGame */ = {
 			isa = PBXGroup;
 			children = (
+				0401097725F423720024E964 /* Models */,
 				04520A8625EAA77800D38EBF /* AppDelegate.swift */,
 				04520A8825EAA77800D38EBF /* SceneDelegate.swift */,
 				040AEDF225EBF194007BB0EF /* Translate */,
@@ -134,6 +147,7 @@
 			isa = PBXGroup;
 			children = (
 				04520A8F25EAA77800D38EBF /* MemoryGame.xcdatamodeld */,
+				0401095325F41D2A0024E964 /* GoogleService-Info.plist */,
 				04520A9725EAA77A00D38EBF /* Info.plist */,
 				04520A9225EAA77900D38EBF /* Assets.xcassets */,
 			);
@@ -177,6 +191,7 @@
 				04520A7F25EAA77800D38EBF /* Sources */,
 				04520A8025EAA77800D38EBF /* Frameworks */,
 				04520A8125EAA77800D38EBF /* Resources */,
+				48280694FF9B78B7B2E95B9B /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -227,6 +242,7 @@
 			files = (
 				04520A9625EAA77900D38EBF /* LaunchScreen.storyboard in Resources */,
 				040AEDF725EBF1D8007BB0EF /* Localizable.strings in Resources */,
+				0401095425F41D2A0024E964 /* GoogleService-Info.plist in Resources */,
 				04520A9325EAA77900D38EBF /* Assets.xcassets in Resources */,
 				04520A8E25EAA77800D38EBF /* Main.storyboard in Resources */,
 			);
@@ -257,6 +273,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		48280694FF9B78B7B2E95B9B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MemoryGame/Pods-MemoryGame-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MemoryGame/Pods-MemoryGame-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MemoryGame/Pods-MemoryGame-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -271,6 +304,7 @@
 				040AEDFE25EBF27F007BB0EF /* Strings+Extension.swift in Sources */,
 				04520A8925EAA77800D38EBF /* SceneDelegate.swift in Sources */,
 				0480B70C25EB1C67001DD27A /* Font+Extension.swift in Sources */,
+				0401097925F4237D0024E964 /* Score.swift in Sources */,
 				04520AAD25EAAA0700D38EBF /* GameView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -433,6 +467,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = G52S3NF77R;
 				INFOPLIST_FILE = MemoryGame/Resources/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -453,6 +488,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = G52S3NF77R;
 				INFOPLIST_FILE = MemoryGame/Resources/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

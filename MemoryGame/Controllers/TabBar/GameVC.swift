@@ -44,7 +44,7 @@ class GameVC: UIViewController {
         
         gameView = GameView(view: view, parent: self)
         
-        gameView.someButton.addTarget(self, action: #selector(startGame), for: .touchUpInside)
+        gameView.roundButton.addTarget(self, action: #selector(startGame), for: .touchUpInside)
         
         gameView.oneView.addTarget(self, action: #selector(greenClick), for: .touchUpInside)
         gameView.oneView.addTarget(self, action: #selector(greenAction), for: .touchUpInside)
@@ -58,9 +58,7 @@ class GameVC: UIViewController {
         gameView.fourView.addTarget(self, action: #selector(yellowClick), for: .touchUpInside)
         gameView.fourView.addTarget(self, action: #selector(yellowAction), for: .touchUpInside)
         
-        
-        
-        
+
         
     }
     
@@ -71,6 +69,12 @@ class GameVC: UIViewController {
         
         
     }
+    
+    /* **************************************************************************************************
+     **
+     **  MARK: Set Info
+     **
+     ****************************************************************************************************/
     
     func setInfo() {
         
@@ -84,7 +88,7 @@ class GameVC: UIViewController {
         
         self.gameView.scoreLabel.text = "Score : \(score)"
         
-        self.gameView.someButton.setTitle("Round \(self.score + 1)", for: .normal)
+        self.gameView.roundButton.setTitle("Round \(self.score + 1)", for: .normal)
         
         
     }
@@ -204,7 +208,7 @@ class GameVC: UIViewController {
     
     /* **************************************************************************************************
      **
-     **  MARK: Func start Game
+     **  MARK: Func sort Color
      **
      ****************************************************************************************************/
     
@@ -216,6 +220,12 @@ class GameVC: UIViewController {
         
         
     }
+    
+    /* **************************************************************************************************
+     **
+     **  MARK: Set Loop colors
+     **
+     ****************************************************************************************************/
     
     func loopColors(number : Int) {
         
@@ -238,6 +248,12 @@ class GameVC: UIViewController {
         }
         
     }
+    
+    /* **************************************************************************************************
+     **
+     **  MARK: Colors CLicks
+     **
+     ****************************************************************************************************/
     
     @objc func greenClick() {
         
@@ -262,6 +278,12 @@ class GameVC: UIViewController {
         checkClick(number: 4)
         
     }
+    
+    /* **************************************************************************************************
+     **
+     **  MARK: Check click
+     **
+     ****************************************************************************************************/
     
     func checkClick(number : Int) {
         
@@ -289,7 +311,7 @@ class GameVC: UIViewController {
                 
                 if self.score > highScore {
                     
-                    var roundScore = self.score
+                    let roundScore = self.score
                     
                     self.colorsArray = []
                     
@@ -354,13 +376,19 @@ class GameVC: UIViewController {
         
     }
     
+    /* **************************************************************************************************
+     **
+     **  MARK: Disable Enable button
+     **
+     ****************************************************************************************************/
+    
     func disableEnableButton() {
         
         if enable {
             
-            self.gameView.someButton.isUserInteractionEnabled = false
-            self.gameView.someButton.backgroundColor = .darkGray
-            self.gameView.someButton.setTitle("Your up".localized, for: .normal)
+            self.gameView.roundButton.isUserInteractionEnabled = false
+            self.gameView.roundButton.backgroundColor = .darkGray
+            self.gameView.roundButton.setTitle("Your up".localized, for: .normal)
             
             self.enable = false
             
@@ -371,9 +399,9 @@ class GameVC: UIViewController {
             
         } else if !enable {
             
-            self.gameView.someButton.isUserInteractionEnabled = true
-            self.gameView.someButton.backgroundColor = .white
-            self.gameView.someButton.setTitle("Round \(self.score + 1)".localized, for: .normal)
+            self.gameView.roundButton.isUserInteractionEnabled = true
+            self.gameView.roundButton.backgroundColor = .white
+            self.gameView.roundButton.setTitle("Round \(self.score + 1)".localized, for: .normal)
             
             self.enable = true
             
@@ -386,15 +414,21 @@ class GameVC: UIViewController {
         
     }
     
+    /* **************************************************************************************************
+     **
+     **  MARK: Send to firebase
+     **
+     ****************************************************************************************************/
+    
     func sendToFireBase() {
         
         let preferences = UserDefaults.standard
         
         if let scoreSend = preferences.object(forKey: "preferenceHighScore") as? Int {
             
-            let thisScore = Score(addedByUser: "Rodrigo", score: scoreSend)
+            let thisScore = Score(addedByUser: "Karina", score: scoreSend)
             
-            let scoreRef = self.ref.child("rodrigo".lowercased())
+            let scoreRef = self.ref.child("karina".lowercased())
 
             scoreRef.setValue(thisScore.toAnyObject())
             

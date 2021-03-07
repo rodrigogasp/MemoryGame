@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		0401095425F41D2A0024E964 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0401095325F41D2A0024E964 /* GoogleService-Info.plist */; };
 		0401097925F4237D0024E964 /* Score.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0401097825F4237D0024E964 /* Score.swift */; };
+		0403108B25F523260033E27F /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0403108A25F523260033E27F /* TabBarController.swift */; };
+		0403108F25F524C30033E27F /* LeaderboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0403108E25F524C30033E27F /* LeaderboardView.swift */; };
+		0403109325F5277E0033E27F /* LeaderboardVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0403109225F5277E0033E27F /* LeaderboardVC.swift */; };
+		0403109725F52A5D0033E27F /* LeaderboardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0403109625F52A5D0033E27F /* LeaderboardCell.swift */; };
 		040AEDF725EBF1D8007BB0EF /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 040AEDF925EBF1D8007BB0EF /* Localizable.strings */; };
 		040AEDFE25EBF27F007BB0EF /* Strings+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040AEDFD25EBF27F007BB0EF /* Strings+Extension.swift */; };
 		04520A8725EAA77800D38EBF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04520A8625EAA77800D38EBF /* AppDelegate.swift */; };
@@ -27,6 +31,10 @@
 /* Begin PBXFileReference section */
 		0401095325F41D2A0024E964 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		0401097825F4237D0024E964 /* Score.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Score.swift; sourceTree = "<group>"; };
+		0403108A25F523260033E27F /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		0403108E25F524C30033E27F /* LeaderboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardView.swift; sourceTree = "<group>"; };
+		0403109225F5277E0033E27F /* LeaderboardVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardVC.swift; sourceTree = "<group>"; };
+		0403109625F52A5D0033E27F /* LeaderboardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardCell.swift; sourceTree = "<group>"; };
 		040AEDF825EBF1D8007BB0EF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		040AEDFB25EBF1FA007BB0EF /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		040AEDFD25EBF27F007BB0EF /* Strings+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Strings+Extension.swift"; sourceTree = "<group>"; };
@@ -67,6 +75,33 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		0403108925F523140033E27F /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				0403108A25F523260033E27F /* TabBarController.swift */,
+				04520A8A25EAA77800D38EBF /* GameVC.swift */,
+				0403109225F5277E0033E27F /* LeaderboardVC.swift */,
+			);
+			path = TabBar;
+			sourceTree = "<group>";
+		};
+		0403109125F527630033E27F /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				04520AAC25EAAA0700D38EBF /* GameView.swift */,
+				0403108E25F524C30033E27F /* LeaderboardView.swift */,
+			);
+			path = TabBar;
+			sourceTree = "<group>";
+		};
+		0403109525F52A460033E27F /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				0403109625F52A5D0033E27F /* LeaderboardCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		040AEDF225EBF194007BB0EF /* Translate */ = {
 			isa = PBXGroup;
 			children = (
@@ -96,13 +131,14 @@
 		04520A8525EAA77800D38EBF /* MemoryGame */ = {
 			isa = PBXGroup;
 			children = (
-				0401097725F423720024E964 /* Models */,
 				04520A8625EAA77800D38EBF /* AppDelegate.swift */,
 				04520A8825EAA77800D38EBF /* SceneDelegate.swift */,
 				040AEDF225EBF194007BB0EF /* Translate */,
 				04520AA325EAA81200D38EBF /* StoryBoards */,
 				04520AA225EAA7EB00D38EBF /* Resources */,
 				04520AA125EAA7C800D38EBF /* Extensions */,
+				0401097725F423720024E964 /* Models */,
+				0403109525F52A460033E27F /* Cells */,
 				04520AA025EAA7C100D38EBF /* Views */,
 				04520A9F25EAA7B900D38EBF /* Controllers */,
 				04520A9E25EAA7B300D38EBF /* Components */,
@@ -121,7 +157,7 @@
 		04520A9F25EAA7B900D38EBF /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				04520A8A25EAA77800D38EBF /* GameVC.swift */,
+				0403108925F523140033E27F /* TabBar */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -129,7 +165,7 @@
 		04520AA025EAA7C100D38EBF /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				04520AAC25EAAA0700D38EBF /* GameView.swift */,
+				0403109125F527630033E27F /* TabBar */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -297,12 +333,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0403109325F5277E0033E27F /* LeaderboardVC.swift in Sources */,
+				0403109725F52A5D0033E27F /* LeaderboardCell.swift in Sources */,
 				04520A8B25EAA77800D38EBF /* GameVC.swift in Sources */,
 				04520A8725EAA77800D38EBF /* AppDelegate.swift in Sources */,
 				04520AB125EABDD000D38EBF /* GenericAlert.swift in Sources */,
+				0403108B25F523260033E27F /* TabBarController.swift in Sources */,
 				04520A9125EAA77800D38EBF /* MemoryGame.xcdatamodeld in Sources */,
 				040AEDFE25EBF27F007BB0EF /* Strings+Extension.swift in Sources */,
 				04520A8925EAA77800D38EBF /* SceneDelegate.swift in Sources */,
+				0403108F25F524C30033E27F /* LeaderboardView.swift in Sources */,
 				0480B70C25EB1C67001DD27A /* Font+Extension.swift in Sources */,
 				0401097925F4237D0024E964 /* Score.swift in Sources */,
 				04520AAD25EAAA0700D38EBF /* GameView.swift in Sources */,

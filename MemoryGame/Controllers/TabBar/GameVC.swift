@@ -33,6 +33,16 @@ class GameVC: UIViewController {
     
     let ref = Database.database().reference(withPath: "scoreBoard")
     
+    let nickRef = Database.database().reference(withPath: "users")
+    
+    var inserNamePopUp : InserNamePopUp!
+    
+    var visualEffectView: UIVisualEffectView!
+    
+    var viewAdded : UIView!
+    
+    var nicknames : [String] = []
+    
     /* **************************************************************************************************
      **
      **  MARK: View
@@ -42,7 +52,11 @@ class GameVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //------------------ View ------------------
+        
         gameView = GameView(view: view, parent: self)
+        
+        //------------------ Buttons Targets ------------------
         
         gameView.roundButton.addTarget(self, action: #selector(startGame), for: .touchUpInside)
         
@@ -58,6 +72,21 @@ class GameVC: UIViewController {
         gameView.fourView.addTarget(self, action: #selector(yellowClick), for: .touchUpInside)
         gameView.fourView.addTarget(self, action: #selector(yellowAction), for: .touchUpInside)
         
+        //------------------Insert Name pop up------------------
+        inserNamePopUp = InserNamePopUp(frame: CGRect(x: view.frame.width*0.05, y: 0, width: view.frame.width*0.9, height: 180))
+        
+        inserNamePopUp.center.y = view.center.y
+        
+        inserNamePopUp.saveButton.addTarget(self, action: #selector(nicknameAction), for: .touchUpInside)
+        
+        //------------------------- Visual Effect -------------------------------
+
+        visualEffectView = UIVisualEffectView()
+        visualEffectView.backgroundColor = .black
+        visualEffectView.alpha = 0.75
+        visualEffectView.frame = view.bounds
+        visualEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        visualEffectView.isUserInteractionEnabled = true
 
         
     }
@@ -65,7 +94,37 @@ class GameVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        setInfo()
+        nickRef.observe(.value) { (snapshot) in
+            
+            var strings = [String]()
+            
+            for child in snapshot.children {
+                
+                if let snap = child as? DataSnapshot {
+                    
+                    strings.append(snap.key)
+                    
+                }
+                
+            }
+            
+            self.nicknames = strings
+            
+            
+        }
+        
+        let preferences = UserDefaults.standard
+        
+        if (preferences.object(forKey: "preferenceNickname") as? String) != nil {
+            
+            setInfo()
+            
+        } else {
+            
+            openInsertNamePopUp()
+
+            
+        }
         
         
     }
@@ -426,13 +485,143 @@ class GameVC: UIViewController {
         
         if let scoreSend = preferences.object(forKey: "preferenceHighScore") as? Int {
             
-            let thisScore = Score(addedByUser: "Karina", score: scoreSend)
+            let nickname = preferences.string(forKey: "preferenceNickname")
             
-            let scoreRef = self.ref.child("karina".lowercased())
+            let thisScore = Score(addedByUser: nickname!, score: scoreSend)
+            
+            let scoreRef = self.ref.child(nickname!.lowercased())
 
             scoreRef.setValue(thisScore.toAnyObject())
             
         }
+        
+    }
+    
+    /* *********************************************************************************
+    **
+    **  MARK: Open Inser Name Pop Up
+    **
+    ***********************************************************************************/
+
+    @objc func openInsertNamePopUp() {
+        
+        if viewAdded == nil {
+            
+            self.animatingOpenView(addView: inserNamePopUp)
+            
+        }
+        
+    }
+    
+    /* *********************************************************************************
+     **
+     **  MARK: Animating Open View
+     **
+     ***********************************************************************************/
+
+    @objc func animatingOpenView(addView : UIView) {
+
+        view.addSubview(visualEffectView)
+        
+        self.view.addSubview(addView)
+
+        self.viewAdded = addView
+
+        addView.transform = CGAffineTransform.init(scaleX: 1.3, y: 1.3)
+        addView.alpha = 0
+
+        UIView.animate(withDuration: 0.4) {
+            addView.alpha = 1
+            addView.transform = CGAffineTransform.identity
+        }
+
+    }
+    
+    /* *********************************************************************************
+     **
+     **  MARK: Animating Close View
+     **
+     ***********************************************************************************/
+
+    func animatingCloseView(removeView : UIView) {
+
+        let effect = self.visualEffectView.effect
+
+        UIView.animate(withDuration: 0.3, animations: {
+            removeView.transform = CGAffineTransform.init(scaleX: 1.3, y: 1.3)
+            removeView.alpha = 0
+
+            self.visualEffectView.effect = nil
+            self.visualEffectView.removeFromSuperview()
+            self.visualEffectView.effect = effect
+
+        }) { (success:Bool) in
+
+            removeView.removeFromSuperview()
+
+            self.viewAdded = nil
+
+
+        }
+
+    }
+    
+    /* *************************************************************************************
+    **
+    **  MARK: Close View
+    **
+    ***************************************************************************************/
+    @objc func closeView() {
+        if viewAdded != nil {
+
+            self.animatingCloseView(removeView: viewAdded)
+
+        }
+    }
+    
+    /* *************************************************************************************
+    **
+    **  MARK: NicknameAction
+    **
+    ***************************************************************************************/
+    
+    @objc func nicknameAction() {
+        
+        if self.inserNamePopUp.nameTextField.text == nil || self.inserNamePopUp.nameTextField.text!.isEmpty {
+            
+            GenericAlert.genericAlert(self, title: "You need to insert a nickname".localized, message: "", actions: [])
+            
+            return
+            
+        }
+        
+        if self.inserNamePopUp.nameTextField.text!.count < 3 {
+            
+            GenericAlert.genericAlert(self, title: "Your nickname has to be at least 3 words", message: "", actions: [])
+            
+            return
+            
+        }
+        
+        if self.nicknames.contains(self.inserNamePopUp.nameTextField.text!) {
+            
+            GenericAlert.genericAlert(self, title: "User with that nickname already exists".localized, message: "", actions: [])
+            
+            return
+            
+        }
+        
+        let preferences = UserDefaults.standard
+        
+        preferences.setValue(self.inserNamePopUp.nameTextField.text!, forKey: "preferenceNickname")
+        
+        let user = User(nickname: self.inserNamePopUp.nameTextField.text!)
+            
+        let nickRef = self.nickRef.child(self.inserNamePopUp.nameTextField.text!.lowercased())
+
+        nickRef.setValue(user.toAnyObject())
+        
+        self.closeView()
         
     }
     

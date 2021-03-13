@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		0401095425F41D2A0024E964 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0401095325F41D2A0024E964 /* GoogleService-Info.plist */; };
 		0401097925F4237D0024E964 /* Score.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0401097825F4237D0024E964 /* Score.swift */; };
+		04017FDC25FD39840013087A /* InsertNamePopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04017FDB25FD39840013087A /* InsertNamePopUp.swift */; };
+		04017FE025FD40A90013087A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04017FDF25FD40A90013087A /* User.swift */; };
 		0403108B25F523260033E27F /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0403108A25F523260033E27F /* TabBarController.swift */; };
 		0403108F25F524C30033E27F /* LeaderboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0403108E25F524C30033E27F /* LeaderboardView.swift */; };
 		0403109325F5277E0033E27F /* LeaderboardVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0403109225F5277E0033E27F /* LeaderboardVC.swift */; };
@@ -31,6 +33,8 @@
 /* Begin PBXFileReference section */
 		0401095325F41D2A0024E964 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		0401097825F4237D0024E964 /* Score.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Score.swift; sourceTree = "<group>"; };
+		04017FDB25FD39840013087A /* InsertNamePopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsertNamePopUp.swift; sourceTree = "<group>"; };
+		04017FDF25FD40A90013087A /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		0403108A25F523260033E27F /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		0403108E25F524C30033E27F /* LeaderboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardView.swift; sourceTree = "<group>"; };
 		0403109225F5277E0033E27F /* LeaderboardVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardVC.swift; sourceTree = "<group>"; };
@@ -71,8 +75,17 @@
 			isa = PBXGroup;
 			children = (
 				0401097825F4237D0024E964 /* Score.swift */,
+				04017FDF25FD40A90013087A /* User.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		04017FD925FD39570013087A /* PopUp */ = {
+			isa = PBXGroup;
+			children = (
+				04017FDB25FD39840013087A /* InsertNamePopUp.swift */,
+			);
+			path = PopUp;
 			sourceTree = "<group>";
 		};
 		0403108925F523140033E27F /* TabBar */ = {
@@ -165,6 +178,7 @@
 		04520AA025EAA7C100D38EBF /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				04017FD925FD39570013087A /* PopUp */,
 				0403109125F527630033E27F /* TabBar */,
 			);
 			path = Views;
@@ -337,6 +351,8 @@
 				0403109725F52A5D0033E27F /* LeaderboardCell.swift in Sources */,
 				04520A8B25EAA77800D38EBF /* GameVC.swift in Sources */,
 				04520A8725EAA77800D38EBF /* AppDelegate.swift in Sources */,
+				04017FE025FD40A90013087A /* User.swift in Sources */,
+				04017FDC25FD39840013087A /* InsertNamePopUp.swift in Sources */,
 				04520AB125EABDD000D38EBF /* GenericAlert.swift in Sources */,
 				0403108B25F523260033E27F /* TabBarController.swift in Sources */,
 				04520A9125EAA77800D38EBF /* MemoryGame.xcdatamodeld in Sources */,

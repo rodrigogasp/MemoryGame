@@ -141,13 +141,13 @@ class GameVC: UIViewController {
         
         if let highScore = preferences.object(forKey: "preferenceHighScore") as? Int {
             
-            self.gameView.highScoreLabel.text = "Highscore : \(highScore)"
+            self.gameView.highScoreLabel.text = "Highscore".localized + " : \(highScore)"
             
         }
         
-        self.gameView.scoreLabel.text = "Score : \(score)"
+        self.gameView.scoreLabel.text = "Score".localized + " : \(score)"
         
-        self.gameView.roundButton.setTitle("Round \(self.score + 1)", for: .normal)
+        self.gameView.roundButton.setTitle("Round".localized + " \(self.score + 1)", for: .normal)
         
         
     }
@@ -460,7 +460,7 @@ class GameVC: UIViewController {
             
             self.gameView.roundButton.isUserInteractionEnabled = true
             self.gameView.roundButton.backgroundColor = .white
-            self.gameView.roundButton.setTitle("Round \(self.score + 1)".localized, for: .normal)
+            self.gameView.roundButton.setTitle("Round".localized + " \(self.score + 1)", for: .normal)
             
             self.enable = true
             
